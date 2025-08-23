@@ -4,7 +4,9 @@ const FRONTEND_URL = process.env.FRONTEND_URL;
 
 const allowedOrigins = [FRONTEND_URL];
 
-export default corsConfig = {
+const corsConfig = {
   credentials: true,
   origin: allowedOrigins,
 };
+
+export default corsConfig;
