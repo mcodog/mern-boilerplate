@@ -1,5 +1,5 @@
+import AuthRoutes from "./Auth/Auth.routes.js";
+
 export default function registerRoutes(app) {
-  app.get("/", (req, res) => {
-    res.send("Hello WOrlds");
-  });
+  app.use("/api/auth", AuthRoutes);
 }

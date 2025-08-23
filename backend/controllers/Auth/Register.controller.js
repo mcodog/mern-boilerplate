@@ -1,4 +1,4 @@
-import { adminCreateUser } from "../../services/Auth/Register.service";
+import { adminCreateUser } from "../../services/Auth/Register.service.js";
 
 export const registerUser = async (req, res) => {
   const { email, password } = req.body;

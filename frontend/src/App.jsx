@@ -2,13 +2,19 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Client from "./components/layouts/Client";
 import Welcome from "./components/pages/Welcome/Index";
+import About from "./components/pages/About/Index";
+import Login from "./components/pages/Auth/Login";
+import Register from "./components/pages/Auth/Register";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Client />}>
         <Route index element={<Welcome />} />
+        <Route path="/about" element={<About />} />
       </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
