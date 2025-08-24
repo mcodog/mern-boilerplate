@@ -37,12 +37,12 @@ export const signIn = async (req, res) => {
 
     const { session, user } = data;
     const profile = await getProfile(user.id);
-    console.log(profile);
+
     if (profile.status === "inactive") throw new Error("account_inactive");
     res.cookie("access_token", session.access_token, cookieConfig);
     res.cookie("refresh_token", session.refresh_token, refreshCookieConfig);
 
-    return res.status(200).json("message: 'success");
+    return res.status(200).json({ message: "success", profile });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: "failed" });

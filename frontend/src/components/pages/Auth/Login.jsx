@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosInstance";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/user/slice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -13,7 +16,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axiosInstance.post("/auth/login", formData);
-      console.log(res);
+      const { profile } = res.data;
+      dispatch(setUser(profile));
     } catch (e) {
       alert("Failed to Register User");
     }
