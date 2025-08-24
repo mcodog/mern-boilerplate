@@ -4,6 +4,7 @@ import axiosInstance from "../../../utils/axiosInstance";
 
 const Register = () => {
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
     password: "",
   });
@@ -30,6 +31,16 @@ const Register = () => {
       <Link to="/">Back</Link>
       <div>
         <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleInputChange}
+            />
+          </div>
           <div>
             <label htmlFor="email">Email</label>
             <input
