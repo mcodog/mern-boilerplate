@@ -1,6 +1,13 @@
 // middleware/setSupabaseSession.js
 import supabaseAdmin from "../config/supabase.cofig.js";
 
+export async function unsetSession(req, res, next) {
+  const { error: signoutError } = await supabaseAdmin.auth.signOut();
+  if (signoutError) throw signoutError;
+  console.log("dsadsa");
+  next();
+}
+
 export async function setSupabaseSession(req, res, next) {
   const access_token = req.cookies.access_token;
   const refresh_token = req.cookies.refresh_token;
