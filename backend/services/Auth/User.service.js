@@ -1,4 +1,4 @@
-import supabaseAdmin from "../../config/supabase.cofig.js";
+import supabaseAdmin, { supabaseAnon } from "../../config/supabase.cofig.js";
 
 export async function updateUser(id, formData) {
   const { data, error } = await supabaseAdmin
@@ -10,13 +10,12 @@ export async function updateUser(id, formData) {
 }
 
 export async function setSession(access_token, refresh_token) {
-  const { data, error } = await supabaseAdmin.auth.setSession({
+  const { data, error } = await supabaseAnon.auth.setSession({
     access_token,
     refresh_token,
   });
 
   if (error) throw error;
-
   return data;
 }
 

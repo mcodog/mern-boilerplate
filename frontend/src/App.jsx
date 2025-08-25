@@ -7,6 +7,8 @@ import Login from "./components/pages/Auth/Login";
 import Register from "./components/pages/Auth/Register";
 import Token from "./components/pages/Auth/Token";
 import Profile from "./components/pages/Profile/Index";
+import RequestReset from "./components/pages/Auth/RequestReset";
+import UpdatePassword from "./components/pages/Auth/UpdatePassword";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/signin-token" element={<Token />} />
+      <Route path="/forgot-password" element={<RequestReset />} />
+      <Route path="/update-password" element={<UpdatePassword />} />
     </Routes>
   );
 };
