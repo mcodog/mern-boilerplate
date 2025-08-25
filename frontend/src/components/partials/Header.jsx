@@ -16,13 +16,26 @@ const Header = () => {
       alert("Failed to logout");
     }
   };
+
+  const handleRefresh = async () => {
+    try {
+      const res = await axiosInstance.get("/auth/refresh");
+      console.log(res);
+      alert("good");
+    } catch (e) {
+      alert("failed");
+    }
+  };
   return (
     <div className="flex gap-2 py-2">
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
 
       {isLoggedIn ? (
-        <Link onClick={handleLogout}>Logout</Link>
+        <>
+          <Link to="/profile">Profile</Link>
+          <Link onClick={handleLogout}>Logout</Link>
+        </>
       ) : (
         <>
           <Link to="/login">Login</Link>

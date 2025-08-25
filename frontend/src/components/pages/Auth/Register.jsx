@@ -14,6 +14,7 @@ const Register = () => {
     try {
       const res = await axiosInstance.post("/auth/register", formData);
       console.log(res);
+      alert("success");
     } catch (e) {
       alert("Failed to Register User");
     }

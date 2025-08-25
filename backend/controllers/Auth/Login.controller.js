@@ -9,19 +9,22 @@ export const tokenSignIn = async (req, res) => {
   try {
     const { access_token, refresh_token } = req.body;
 
-    const { data, error } = await supabaseAdmin.auth.setSession({
+    const { data, error } = await supabaseAnon.auth.setSession({
       access_token,
       refresh_token,
     });
 
-    const { session } = data;
+    const { session, user } = data;
+    const profile = await getProfile(user.id);
+
+    if (profile.status === "inactive") throw new Error("account_inactive");
 
     res.cookie("access_token", session.access_token, cookieConfig);
     res.cookie("refresh_token", session.refresh_token, refreshCookieConfig);
 
-    return res.status(200).json({ message: "good" });
+    return res.status(200).json({ message: "good", profile });
   } catch (e) {
-    return res.status(500).json({ message: "failed api" });
+    return res.status(500).json({ message: "failed api", e });
   }
 };
 

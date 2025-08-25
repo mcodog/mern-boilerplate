@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosInstance";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../../redux/user/slice";
+import { login, setUser } from "../../../redux/user/slice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,9 @@ const Login = () => {
     try {
       const res = await axiosInstance.post("/auth/login", formData);
       const { profile } = res.data;
-      dispatch(setUser(profile));
+      dispatch(login(profile));
+      console.log(profile);
+      alert("success");
     } catch (e) {
       alert("Failed to Register User");
     }

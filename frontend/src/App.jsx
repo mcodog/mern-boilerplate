@@ -6,6 +6,7 @@ import About from "./components/pages/About/Index";
 import Login from "./components/pages/Auth/Login";
 import Register from "./components/pages/Auth/Register";
 import Token from "./components/pages/Auth/Token";
+import Profile from "./components/pages/Profile/Index";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/" element={<Client />}>
         <Route index element={<Welcome />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

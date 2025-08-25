@@ -5,11 +5,14 @@ import {
   signIn,
   tokenSignIn,
 } from "../../controllers/Auth/Login.controller.js";
-import { unsetSession } from "../../middleware/supabase.middleware.js";
+import {
+  refreshToken,
+  unsetSession,
+} from "../../middleware/supabase.middleware.js";
 const router = express.Router();
 
 router.post("/register", registerUser);
-router.post("/signin-token", tokenSignIn);
+router.post("/signin-token", unsetSession, tokenSignIn);
 router.post("/login", unsetSession, signIn);
 router.get("/logout", logout);
 
